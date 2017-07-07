@@ -4,7 +4,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 import br.com.hrom.maplinkcodechallenge.domain.Point;
-import br.com.hrom.maplinkcodechallenge.geomath.Haversine;
+import br.com.hrom.maplinkcodechallenge.math.geo.Haversine;
 
 public class HaversineTest {
 	

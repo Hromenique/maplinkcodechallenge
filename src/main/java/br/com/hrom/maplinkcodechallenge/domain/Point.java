@@ -1,13 +1,16 @@
 package br.com.hrom.maplinkcodechallenge.domain;
 
+import java.io.Serializable;
+
 /**
  * Uma determinada um ponto definido pelo par Latitude e longitude
  * 
  * @author Hromenique Cezniowscki Leite Batista
  *
  */
-public class Point {
-
+public class Point implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private double lat;
 	private double lng;
 

@@ -1,22 +1,26 @@
 package br.com.hrom.maplinkcodechallenge.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import static org.springframework.util.Assert.notNull;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.SerializationUtils;
 
 /**
  * Um cidade contendo perímetro retangular ({@link Point}) e possíveis alvos dos
- * vilões ({@link Target})
+ * vilões ({@link Location})
  * 
  * @author Hromenique Cezniowscki Leite Batista
  *
  */
-public class City {
-
+public class City implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	String name;
-	List<Target> targets = new ArrayList<Target>();
+	List<Location> targets = new ArrayList<Location>();
 	private Point bottomLeftPoint;
 	private Point topRightPoint;
 
@@ -33,7 +37,7 @@ public class City {
 		setTopRightPoint(topRightPoint);
 	}
 
-	public City(String name, List<Target> targets, Point bottomLeftPoint, Point topRightPoint) {
+	public City(String name, List<Location> targets, Point bottomLeftPoint, Point topRightPoint) {
 		super();
 		this.name = name;
 		this.targets = targets;
@@ -54,16 +58,16 @@ public class City {
 		this.name = name;
 	}
 
-	public List<Target> getTargets() {
-		return Collections.unmodifiableList(this.targets);
+	public List<Location> getTargets() {
+		return this.targets.stream().map(source -> SerializationUtils.clone(source)).collect(Collectors.toList());
 	}
 
-	public void addTarget(Target target) {
+	public void addTarget(Location target) {
 		notNull(target, "target não pode ser null");
 		this.targets.add(target);
 	}
 
-	public void setTargets(List<Target> targets) {
+	public void setTargets(List<Location> targets) {
 		notNull(targets, "targets não pode ser null");
 		this.targets = targets;
 	}

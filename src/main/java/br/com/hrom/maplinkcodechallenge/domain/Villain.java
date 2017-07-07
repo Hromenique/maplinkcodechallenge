@@ -1,5 +1,7 @@
 package br.com.hrom.maplinkcodechallenge.domain;
 
+import java.io.Serializable;
+
 import org.springframework.util.Assert;
 
 /**
@@ -8,8 +10,9 @@ import org.springframework.util.Assert;
  * @author Hromenique Cezniowscki Leite Batista
  *
  */
-public class Villain {
-
+public class Villain implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private String name;
 	private Point location;
 

@@ -2,7 +2,7 @@ package br.com.hrom.maplinkcodechallenge.dto;
 
 import java.util.List;
 
-import br.com.hrom.maplinkcodechallenge.domain.Target;
+import br.com.hrom.maplinkcodechallenge.domain.Location;
 import br.com.hrom.maplinkcodechallenge.domain.Villain;
 
 /**
@@ -14,7 +14,7 @@ import br.com.hrom.maplinkcodechallenge.domain.Villain;
 public class VillainAttackProbability {
 	
 	private Villain villain;
-	private List<Target> targets;	
+	private List<Location> targets;	
 	
 	public Villain getVillain() {
 		return villain;
@@ -23,14 +23,14 @@ public class VillainAttackProbability {
 		this.villain = villain;
 	}
 	
-	public void addTarget(Target target){
+	public void addTarget(Location target){
 		targets.add(target);
 	}
 	
-	public List<Target> getTargets() {
+	public List<Location> getTargets() {
 		return targets;
 	}
-	public void setTargets(List<Target> targets) {
+	public void setTargets(List<Location> targets) {
 		this.targets = targets;
 	}
 	
