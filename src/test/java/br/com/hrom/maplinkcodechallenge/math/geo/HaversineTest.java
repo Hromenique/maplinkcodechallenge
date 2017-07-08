@@ -1,4 +1,4 @@
-package br.com.hrom.maplinkcodechallenge.geomath;
+package br.com.hrom.maplinkcodechallenge.math.geo;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

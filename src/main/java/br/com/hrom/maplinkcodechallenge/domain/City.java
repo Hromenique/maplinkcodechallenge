@@ -9,9 +9,10 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.SerializationUtils;
 
+import br.com.hrom.maplinkcodechallenge.math.geo.PointInRectangle;
+
 /**
- * Um cidade contendo perímetro retangular ({@link Point}) e possíveis alvos dos
- * vilões ({@link Location})
+ * Um cidade contendo perímetro retangular ({@link Point}) e localidades
  * 
  * @author Hromenique Cezniowscki Leite Batista
  *
@@ -20,7 +21,7 @@ public class City implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	String name;
-	List<Location> targets = new ArrayList<Location>();
+	List<Location> locations = new ArrayList<Location>();
 	private Point bottomLeftPoint;
 	private Point topRightPoint;
 
@@ -40,14 +41,19 @@ public class City implements Serializable{
 	public City(String name, List<Location> targets, Point bottomLeftPoint, Point topRightPoint) {
 		super();
 		this.name = name;
-		this.targets = targets;
+		this.locations = targets;
 		setBottomLeftPoint(bottomLeftPoint);
 		setTopRightPoint(topRightPoint);
 	}
 
+	/**
+	 * Verifica se um ponto está contido dentro da área da cidade
+	 * 
+	 * @param point
+	 * @return
+	 */
 	public boolean contains(Point point) {
-		// TODO falta implementar
-		return false;
+		return PointInRectangle.test(point, bottomLeftPoint, topRightPoint);
 	}
 
 	public String getName() {
@@ -58,18 +64,18 @@ public class City implements Serializable{
 		this.name = name;
 	}
 
-	public List<Location> getTargets() {
-		return this.targets.stream().map(source -> SerializationUtils.clone(source)).collect(Collectors.toList());
+	public List<Location> getLocations() {
+		return this.locations.stream().map(source -> SerializationUtils.clone(source)).collect(Collectors.toList());
 	}
 
 	public void addTarget(Location target) {
 		notNull(target, "target não pode ser null");
-		this.targets.add(target);
+		this.locations.add(target);
 	}
 
-	public void setTargets(List<Location> targets) {
-		notNull(targets, "targets não pode ser null");
-		this.targets = targets;
+	public void setLocations(List<Location> targets) {
+		notNull(targets, "locations não pode ser null");
+		this.locations = targets;
 	}
 
 	public Point getBottomLeftPoint() {
