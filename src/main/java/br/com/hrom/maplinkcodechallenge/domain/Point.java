@@ -15,8 +15,8 @@ public class Point implements Serializable{
 	private double lng;
 
 	public Point(double lat, double lng) {
-		setLat(lat);
-		setLng(lng);
+		this.lat = lat;
+		this.lng = lng;
 	}
 
 	/**

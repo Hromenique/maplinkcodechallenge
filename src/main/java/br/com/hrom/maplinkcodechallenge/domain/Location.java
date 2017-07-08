@@ -5,7 +5,7 @@ import static org.springframework.util.Assert.notNull;
 import java.io.Serializable;
 
 /**
- * Um local na cidade ({@link City})
+ * Um localidade da cidade ({@link City})
  * 
  * @author Hromenique Cezniowscki Leite Batista
  *
@@ -13,43 +13,43 @@ import java.io.Serializable;
 public class Location implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String place;
-	private Point location;
+	private String name;
+	private Point point;
 
 	public Location(String place, Point location) {
 		super();
-		setPlace(place);
-		setLocation(location);
+		setName(place);
+		setPoint(location);
 	}
 
-	public String getPlace() {
-		return place;
+	public String getName() {
+		return name;
 	}
 
-	public void setPlace(String place) {
-		this.place = place;
+	public void setName(String place) {
+		this.name = place;
 	}
 
-	public Point getLocation() {
-		return location;
+	public Point getPoint() {
+		return point;
 	}
 
-	public void setLocation(Point location) {
-		notNull(location, "location não pode ser null");
-		this.location = location;
+	public void setPoint(Point location) {
+		notNull(location, "point não pode ser null");
+		this.point = location;
 	}
 
 	@Override
 	public String toString() {
-		return "Location [place=" + place + ", location=" + location + "]";
+		return "Location [name=" + name + ", point=" + point + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((location == null) ? 0 : location.hashCode());
-		result = prime * result + ((place == null) ? 0 : place.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((point == null) ? 0 : point.hashCode());
 		return result;
 	}
 
@@ -62,15 +62,15 @@ public class Location implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Location other = (Location) obj;
-		if (location == null) {
-			if (other.location != null)
+		if (name == null) {
+			if (other.name != null)
 				return false;
-		} else if (!location.equals(other.location))
+		} else if (!name.equals(other.name))
 			return false;
-		if (place == null) {
-			if (other.place != null)
+		if (point == null) {
+			if (other.point != null)
 				return false;
-		} else if (!place.equals(other.place))
+		} else if (!point.equals(other.point))
 			return false;
 		return true;
 	}
