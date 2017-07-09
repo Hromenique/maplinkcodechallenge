@@ -68,18 +68,20 @@ public class VillainAttackProbabilityLogicTest {
 		
 		List<Target> targets = logic.calculeProbability(Arrays.asList(t1, t2));
 		
+		
+		
 		assertEquals(2, targets.size());
 		assertThat(targets, 
 				containsInAnyOrder(
 						allOf(
 								hasProperty("name", equalTo("alvo1")),	
 								hasProperty("distanceToVillain", equalTo(0.0)),
-								hasProperty("probability", equalTo(95.0))
+								hasProperty("probability", equalTo(maxProbabilityAttack))
 							),
 						allOf(
 								hasProperty("name", equalTo("alvo2")),	
 								hasProperty("distanceToVillain", equalTo(2.0)),
-								hasProperty("probability", equalTo(5.0))
+								hasProperty("probability", equalTo(100 - maxProbabilityAttack))
 							)
 						)
 				);	
@@ -91,6 +93,7 @@ public class VillainAttackProbabilityLogicTest {
 		Target t1 = new Target("alvo1", new Point(10, 20), 100);
 		Target t2 = new Target("alvo2", new Point(10, 20), 100);
 		Target t3 = new Target("alvo3", new Point(10, 20), 1);
+		double othersAttackProbability = (100 - maxProbabilityAttack)/2;
 		
 		List<Target> targets = logic.calculeProbability(Arrays.asList(t1, t2, t3));
 		
@@ -100,17 +103,17 @@ public class VillainAttackProbabilityLogicTest {
 							allOf(
 									hasProperty("name", equalTo("alvo1")),	
 									hasProperty("distanceToVillain", equalTo(100.0)),
-									hasProperty("probability", equalTo(2.5))
+									hasProperty("probability", equalTo(othersAttackProbability))
 								),
 							allOf(
 									hasProperty("name", equalTo("alvo2")),	
 									hasProperty("distanceToVillain", equalTo(100.0)),
-									hasProperty("probability", equalTo(2.5))
+									hasProperty("probability", equalTo(othersAttackProbability))
 								),
 							allOf(
 									hasProperty("name", equalTo("alvo3")),	
 									hasProperty("distanceToVillain", equalTo(1.0)),
-									hasProperty("probability", equalTo(95.0))
+									hasProperty("probability", equalTo(maxProbabilityAttack))
 								)
 						)
 				);	
