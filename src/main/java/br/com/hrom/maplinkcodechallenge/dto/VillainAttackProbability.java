@@ -2,6 +2,8 @@ package br.com.hrom.maplinkcodechallenge.dto;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import br.com.hrom.maplinkcodechallenge.domain.Target;
 import br.com.hrom.maplinkcodechallenge.domain.Villain;
 
@@ -12,6 +14,7 @@ import br.com.hrom.maplinkcodechallenge.domain.Villain;
  * @author Hromenique Cezniowscki Leite Batista
  *
  */
+@JsonPropertyOrder(value={"villain", "targets"})
 public class VillainAttackProbability {
 
 	private Villain villain;

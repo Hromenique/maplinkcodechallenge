@@ -4,12 +4,16 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * Utilizado como o resposta para os casos onde ocorre um em uma api REST
  * 
  * @author Hromenique Cezniowscki Leite Batista
  *
  */
+@JsonInclude(Include.NON_NULL)
 public class ErrorMessageResponse implements Serializable {
 	private static final long serialVersionUID = 1L;
 

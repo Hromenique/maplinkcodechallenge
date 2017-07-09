@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
  * @author Hromenique Cezniowscki Leite Batista
  *
  */
-@JsonInclude(content=Include.NON_NULL)
+@JsonInclude(Include.NON_NULL)
 public class ErrorMessage implements Serializable {
 	private static final long serialVersionUID = 1L;
 

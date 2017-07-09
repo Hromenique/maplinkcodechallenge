@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Optional;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class GeoCodingServiceTest {
 	@Autowired
 	private GeoCodingService service;
 	
+	@Ignore
 	@Test
 	public void buscaPontoApartirDoEndereco(){
 		String address = "Av. José Rodrigues Píres, 537 - Jundiapeba, Mogi das Cruzes - SP"; // -23.5468679,-46.2645081
@@ -38,6 +40,7 @@ public class GeoCodingServiceTest {
 				); 
 	}
 	
+	@Ignore
 	@Test
 	public void buscaPontoDeEnderecoNaoExistente(){
 		String address = "Av. dhsjdjadhjsdfhfdajhhj, 45 - sddsfdfd, dsdsf - SP"; 
@@ -46,6 +49,7 @@ public class GeoCodingServiceTest {
 		assertFalse(point.isPresent());
 	}
 	
+	@Ignore
 	@Test
 	public void buscaPontoPorLocalizacao(){
 		String locationName = "Mogi Shopping"; //-23.5160314, -46.1797656
@@ -60,6 +64,7 @@ public class GeoCodingServiceTest {
 				); 
 	}
 	
+	@Ignore
 	@Test
 	public void buscaPontoPorLocalizacaoNaoExistente(){
 		String locationName = "hdkfsahfsadkjdsfhjk"; //-23.5160314,-46.1819543
@@ -68,6 +73,7 @@ public class GeoCodingServiceTest {
 		assertFalse(point.isPresent());
 	}
 	
+	@Ignore
 	@Test
 	public void buscaPontoPorLocalizacaoDentroDeGothamCity(){
 		String locationName = "Wayne Enterprises";

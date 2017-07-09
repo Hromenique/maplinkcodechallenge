@@ -1,5 +1,6 @@
 package br.com.hrom.maplinkcodechallenge.restcontroller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ public class VillainProbabilityAttackRestController {
 	
 	private static final String REGEX_LAT_LONG = "-?\\d+(\\.\\d+)?\\,-?\\d+(\\.\\d+)?";
 
+	@Autowired
 	private VillainAttackProbabilityService villainProbabilityService;
 	
 	@GetMapping(value="coordinate", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -64,7 +66,7 @@ public class VillainProbabilityAttackRestController {
 	}
 	
 	private boolean isValid(double latitude, double longitude){
-		if((-90 >= latitude && latitude <= 90) && (-180 >= longitude && longitude <= 180))
+		if((latitude >= -90.0 && latitude <= 90.0) && (longitude >= -180.0 && longitude <= 180.0))
 			return true;
 		
 		return false;

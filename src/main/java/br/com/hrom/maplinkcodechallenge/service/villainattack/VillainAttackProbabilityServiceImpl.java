@@ -47,7 +47,7 @@ public class VillainAttackProbabilityServiceImpl implements VillainAttackProbabi
 	@Override
 	public VillainAttackProbability calculateProbabilityAttackByPoint(Point villainPoint) throws OutOfCityException {
 		if(!gotham.contains(villainPoint))
-			throw new OutOfCityException("Joker is out of City. Another hero can capture him!");
+			throw new OutOfCityException("Joker is out of Gotham City. Another hero can capture him!");
 		
 		List<Target> targets = gotham.getLocations().stream()
 				.filter(location -> location.getPoint().calculeDistanceTo(villainPoint) <= villainActionRadius)

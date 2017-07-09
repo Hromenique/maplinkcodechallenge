@@ -2,6 +2,7 @@ package br.com.hrom.maplinkcodechallenge.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Uma localidade que pode ser um um possível alvo de ação de vilão
@@ -9,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Hromenique Cezniowscki Leite Batista
  *
  */
+@JsonPropertyOrder(value={"place", "location", "probability"})
 public class Target extends Location {
 	private static final long serialVersionUID = 1L;
 
