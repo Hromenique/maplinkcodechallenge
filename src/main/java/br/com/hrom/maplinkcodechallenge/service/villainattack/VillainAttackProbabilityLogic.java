@@ -1,5 +1,6 @@
 package br.com.hrom.maplinkcodechallenge.service.villainattack;
 
+import java.util.Collection;
 import java.util.List;
 
 import br.com.hrom.maplinkcodechallenge.domain.Target;
@@ -15,9 +16,9 @@ public interface VillainAttackProbabilityLogic {
 	/**
 	 * Calcula a probabilidade de ataque de um vilão a determinados {@link Target}
 	 * 
-	 * @param targets uma lista contendo os possíveis alvos dos vilões
+	 * @param targets uma collection contendo os possíveis alvos dos vilões
 	 * @return uma lista de alvos com o campo probability preenchido com a probabilidade de ataque de um vilão
 	 */
-	List<Target> calculeProbability(List<Target> targets);
+	List<Target> calculeProbability(Collection<Target> targets);
 
 }

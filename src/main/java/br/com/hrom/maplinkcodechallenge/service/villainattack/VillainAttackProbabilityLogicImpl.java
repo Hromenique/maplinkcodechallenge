@@ -1,5 +1,7 @@
 package br.com.hrom.maplinkcodechallenge.service.villainattack;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,11 +27,12 @@ public class VillainAttackProbabilityLogicImpl implements VillainAttackProbabili
 	/**
 	 * Calcula a probabilidade de ataque de um vilão a determinados {@link Target}
 	 * 
-	 * @param targets uma lista contendo os possíveis alvos dos vilões
+	 * @param targets uma collection contendo os possíveis alvos dos vilões
 	 * @return uma lista de alvos com o campo probability preenchido com a probabilidade de ataque de um vilão
 	 */
 	@Override
-	public List<Target> calculeProbability(List<Target> targets){
+	public List<Target> calculeProbability(Collection<Target> targetsToCalculate){		
+		List<Target> targets = new ArrayList<>(targetsToCalculate);
 		
 		//1º Caso: distância de um dos alvos é igual a zero, então tem 95% de chance
 		List<Target> targetsWithDistanceZero = targets.stream().filter(target -> target.getDistanceToVillain() == 0.0).collect(Collectors.toList());
@@ -43,7 +46,7 @@ public class VillainAttackProbabilityLogicImpl implements VillainAttackProbabili
 		targets = new ProbabilidadesInversas(100.0).calcula(toListOfItemProbabilidade(targets)).stream().map(item -> toTarget(item)).collect(Collectors.toList());
 		
 		//2º Caso: a probabilidade de ataque de um vilão a um alvo é maior que 95%
-		Optional<Target> targetWithProbabilityMax = targets.stream().filter(target -> target.getProbability() > 95.0).findFirst();
+		Optional<Target> targetWithProbabilityMax = targets.stream().filter(target -> target.getProbability() > maxProbabilityAttack).findFirst();
 		if(targetWithProbabilityMax.isPresent()){
 			return recalculeWithTargetWithMaxProbability(targets, targetWithProbabilityMax.get());			
 		}
