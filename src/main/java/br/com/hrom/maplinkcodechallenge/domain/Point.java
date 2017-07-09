@@ -2,6 +2,8 @@ package br.com.hrom.maplinkcodechallenge.domain;
 
 import java.io.Serializable;
 
+import br.com.hrom.maplinkcodechallenge.math.geo.Haversine;
+
 /**
  * Uma determinada um ponto definido pelo par Latitude e longitude
  * 
@@ -12,7 +14,7 @@ public class Point implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private double lat;
-	private double lng;
+	private double lng;	
 
 	public Point(double lat, double lng) {
 		this.lat = lat;
@@ -30,7 +32,21 @@ public class Point implements Serializable{
 	 * @return a distância entre os dois pontos utilizando a <b>Fórmula de Haversine</b>
 	 */
 	public double calculeDistanceTo(Point other) {
-		return 0;
+		return Haversine.calculeteDistance(this, other);
+	}
+	
+	/**
+	 * Calcula a distância até outro ponto ({@link Point}). O calculo
+	 * será feito utilizando a
+	 * <a href="https://rosettacode.org/wiki/Haversine_formula">fórmula de
+	 * Haversine</a>
+	 * 
+	 * @param destineLat latitude do outro ponto
+	 * @param destineLng longitude do outro ponto
+	 * @return
+	 */
+	public double calculeDistanceTo(double destineLat, double destineLng){
+		return Haversine.calculeteDistance(lat, lng, destineLat, destineLng);		
 	}
 
 	public double getLat() {

@@ -11,6 +11,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
 
@@ -50,6 +51,24 @@ public class CityTest {
 	public void naoContemPonto(){
 		City city = createNewCity();
 		assertFalse(city.contains(new Point(40.736422,  -73.978039)));
+	}
+	
+	@Test
+	public void buscaLocation(){
+		City city = createNewCity();
+		Optional<Location> location = city.findLocationByName("Amusement Mile");
+		
+		assertTrue(location.isPresent());
+		assertThat(location.get(), hasProperty("name", equalTo("Amusement Mile")));
+		assertNotSame(location.get(), city.getLocations().get(0));			
+	}
+	
+	@Test
+	public void buscaLocationNaoExistente(){
+		City city = createNewCity();
+		Optional<Location> location = city.findLocationByName("Wayne Mansion");
+		
+		assertFalse(location.isPresent());				
 	}
 	
 	private City createNewCity(){

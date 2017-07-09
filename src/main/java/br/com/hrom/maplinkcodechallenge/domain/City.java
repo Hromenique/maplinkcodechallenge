@@ -5,6 +5,7 @@ import static org.springframework.util.Assert.notNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.SerializationUtils;
@@ -62,6 +63,21 @@ public class City implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	/**
+	 * Busca uma localização dentro da cidade
+	 * 
+	 * @param locationName nome do local procurado
+	 * @return um {@link Optional} que pode conter os dados do local procurado
+	 */
+	public Optional<Location> findLocationByName(String locationName){
+		Optional<Location> location = locations.stream().filter(local -> local.getName().equals(locationName)).findFirst();
+		
+		if(location.isPresent())
+			return Optional.of(SerializationUtils.clone(location.get()));
+		
+		return Optional.empty();
 	}
 
 	public List<Location> getLocations() {
