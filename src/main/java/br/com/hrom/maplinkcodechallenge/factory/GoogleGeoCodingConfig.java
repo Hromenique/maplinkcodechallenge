@@ -16,10 +16,9 @@ import com.google.maps.GeoApiContext;
  */
 @Configuration
 public class GoogleGeoCodingConfig {
-
 	
 	@Bean
-	public GeoApiContext xpto(@Value("${googlemaps.apikey}") String apiKey, @Value("googlemaps.timeoutInMili")long timeoutInMili){
+	public GeoApiContext geoApiContext(@Value("${googlemaps.apikey}") String apiKey, @Value("${googlemaps.timeoutInMili}")long timeoutInMili){
 		return new GeoApiContext()
 				.setApiKey(apiKey)
 				.setConnectTimeout(timeoutInMili, TimeUnit.MILLISECONDS);
