@@ -1,4 +1,4 @@
-package br.com.hrom.maplinkcodechallenge.service;
+package br.com.hrom.maplinkcodechallenge.service.villainattack;
 
 import br.com.hrom.maplinkcodechallenge.domain.Point;
 import br.com.hrom.maplinkcodechallenge.dto.VillainAttackProbability;

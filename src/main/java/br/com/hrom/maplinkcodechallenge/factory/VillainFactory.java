@@ -11,11 +11,11 @@ import br.com.hrom.maplinkcodechallenge.domain.Villain;
  */
 public class VillainFactory {
 
-	Villain joker(){
+	public static Villain joker(){
 		return new Villain("Joker");
 	}
 	
-	Villain joker(Point location){
+	public static Villain joker(Point location){
 		Villain joker = joker();
 		joker.setLocation(location);
 		
