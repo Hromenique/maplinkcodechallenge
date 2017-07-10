@@ -36,7 +36,7 @@ public class VillainProbabilityAttackRestController {
 		Double longitude = new Double(latLongValues[1]);
 		
 		if(!isValid(latitude, longitude))
-			return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(new ErrorMessageResponse("Error in range of latitude/longitude. Latitude is beetwen -90 and 90. Longitude is beetwen -180 and 180"));		
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ErrorMessageResponse("Error in range of latitude/longitude. Latitude is beetwen -90 and 90. Longitude is beetwen -180 and 180"));		
 		
 		VillainAttackProbability response = villainProbabilityService.calculateProbabilityAttackByPoint(latitude, longitude);
 		
