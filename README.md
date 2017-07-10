@@ -4,7 +4,7 @@
 
 ### Clonagem do repositório 
 
-1) Instalar o git e maven previamente. Os passos para instalação de ambos estão além do escopo deste manual.
+1) Instalar o git e o maven previamente. O procedimento de instalação de ambos está além do escopo deste manual.
 2) Executar o comando: <code>git clone https://github.com/Hromenique/maplinkcodechallenge.git</code> 
 3) Após isso o diretório <b>maplinkcodechallenge</b> (repositório local) será criado.
 4) Após a criação do repositório local. Existem duas maneiras de rodar o projeto/programa: 
